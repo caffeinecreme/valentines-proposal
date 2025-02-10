@@ -1,0 +1,133 @@
+:root {
+    --primary-bg: #ffd6e0;
+    --primary-color: #ff4d6d;
+    --button-bg: #ff4d6d;
+    --button-text: white;
+    --no-button-bg: #666;
+    --white-bg: rgba(255, 255, 255, 0.3);
+    --font-main: "Zen Antique Soft", serif;
+  }
+
+  body {
+    margin: 0;
+    height: 100vh;
+    width: 100vw;
+    background: var(--primary-bg);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: var(--font-main);
+  }
+
+  .proposal,
+  .thank-you-message {
+    background: var(--white-bg);
+    padding: 2rem;
+    border-radius: 1rem;
+    text-align: center;
+    z-index: 10;
+    position: fixed;
+  }
+
+  h1,
+  h2 {
+    color: var(--primary-color);
+    margin-bottom: 2rem;
+    font-size: 4rem;
+  }
+
+  .buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 2rem;
+  }
+
+  button {
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 0.5rem;
+    font-size: 1.2rem;
+    cursor: pointer;
+  }
+
+  .yes {
+    background: var(--button-bg);
+    color: var(--button-text);
+  }
+
+  .no {
+    background: var(--no-button-bg);
+    color: var(--button-text);
+    position: relative;
+  }
+
+  .no.moving {
+    position: fixed;
+  }
+
+  .heart {
+    position: fixed;
+    width: 40px;
+    height: 40px;
+    animation: float 30s linear infinite;
+    opacity: 0.5;
+    z-index: 1;
+  }
+
+  .heart::before,
+  .heart::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    width: 20px;
+    height: 32px;
+    background: #ff4d6d;
+    border-radius: 20px 20px 0 0;
+  }
+
+  .heart::before {
+    left: 20px;
+    transform: rotate(-45deg);
+    transform-origin: 0 100%;
+  }
+
+  .heart::after {
+    left: 0;
+    transform: rotate(45deg);
+    transform-origin: 100% 100%;
+  }
+
+  #proposal,
+  #thankYouMessage {
+    transition: opacity 0.5s ease-in-out;
+  }
+
+  .thank-you-message {
+    display: none;
+    opacity: 0;
+    width: 70%;
+  }
+
+  .fade-in {
+    display: block;
+    opacity: 1;
+  }
+
+  .fade-out {
+    opacity: 0;
+  }
+
+  @keyframes float {
+    0% {
+      transform: translateY(160vh) scale(0.3);
+      opacity: 0.8;
+    }
+    100% {
+      transform: translateY(-60vh) scale(1);
+      opacity: 0;
+    }
+  }
